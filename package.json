@@ -1,0 +1,35 @@
+{
+  "name": "image-gallery-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch",
+    "eslint": "./node_modules/.bin/eslint --fix --ext .",
+    "db:seed": "node database/seed.js",
+    "server": "nodemon server/app"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lodge-io/image-gallery-module.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lodge-io/image-gallery-module/issues"
+  },
+  "homepage": "https://github.com/lodge-io/image-gallery-module#readme",
+  "dependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-hackreactor": "github:reactorcore/eslint-config-hackreactor",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.20"
+  },
+  "devDependencies": {
+    "jest": "^24.6.0"
+  }
+}

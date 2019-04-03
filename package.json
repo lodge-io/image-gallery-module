@@ -4,21 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "jest --watch",
-=======
-    "test": "echo \"Error: no test specified\" && exit 1",
->>>>>>> 4d1ef07d8b30118eda7269836dcedfdbdb6be67a
     "eslint": "./node_modules/.bin/eslint --fix --ext .",
     "db:seed": "node database/seed.js",
     "server": "nodemon server/app"
   },
-<<<<<<< HEAD
   "jest": {
     "testEnvironment": "node"
   },
-=======
->>>>>>> 4d1ef07d8b30118eda7269836dcedfdbdb6be67a
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lodge-io/image-gallery-module.git"
@@ -37,10 +30,7 @@
     "mongoose": "^5.4.20"
   },
   "devDependencies": {
-<<<<<<< HEAD
+    "enzyme": "^3.9.0",
     "jest": "^24.6.0"
-=======
-    "jest": "^24.5.0"
->>>>>>> 4d1ef07d8b30118eda7269836dcedfdbdb6be67a
   }
 }

@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-
 const dbURL = 'mongod://localhost:27017/lodge';
 
 

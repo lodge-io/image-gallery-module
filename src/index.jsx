@@ -71,4 +71,6 @@ let Collage = () => {
   );
 };
 
-ReactDOM.render(<Collage />, document.getElementById('root'));
+if (typeof window !== 'undefined') {
+  ReactDOM.render(<Collage />, document.getElementById('root'));
+} 

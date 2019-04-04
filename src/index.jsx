@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import InfiniteScroll from 'react-infinite-scroller';
 import axios from 'axios';
 
@@ -73,4 +73,5 @@ let Collage = () => {
 
 if (typeof window !== 'undefined') {
   ReactDOM.render(<Collage />, document.getElementById('root'));
+ 
 } 

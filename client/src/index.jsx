@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import InfiniteScroll from 'react-infinite-scroller';
-import App from './App';
 import axios from 'axios'
 
 // ReactDOM.render(<App />, document.getElementById('root'));

@@ -6,12 +6,13 @@
   "scripts": {
     "start:server": "nodemon server/app",
     "dev:react": "webpack -d --watch",
-    "test": "jest --watch",
+    "test": "jest --watch --coverage",
     "eslint": "./node_modules/.bin/eslint --fix --ext .",
     "db:seed": "node database/seed.js"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true
   },
   "repository": {
     "type": "git",

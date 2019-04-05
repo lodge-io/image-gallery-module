@@ -20,15 +20,16 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   // mongoose.connect(dbUrl, (err, databaseConnection) => {
-  //     if (err) console.error(err);
+      // if (err) console.error(err);
   //     db = databaseConnection.db('lodge');
 
   // });
-  db.collection('rooms').find({}).toArray((queryError, results) => {
-    if (queryError) {console.error(queryError);}
-    console.log(results);
-    res.json(results);
-  });
+  // db.collection('rooms').find({}).toArray((queryError, results) => {
+  //   if (queryError) {console.error(queryError);}
+  //   console.log(results);
+  //   res.json(results);
+  // });
+  res.redirect('./client/dist/index.html');
 });
 
 app.listen(app.get('port'), () => {

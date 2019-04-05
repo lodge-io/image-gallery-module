@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -33,18 +33,35 @@
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -62,20 +79,22 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./client/src/index.jsx");
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/* unknown exports provided */
-/* all exports used */
+/******/ ({
+
+/***/ "./client/src/index.jsx":
 /*!******************************!*\
   !*** ./client/src/index.jsx ***!
   \******************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module build failed: Error: Plugin/Preset files are not allowed to export objects, only functions. In /Users/MyFolder/FEC/image-gallery-module/node_modules/babel-preset-react/lib/index.js\\n    at createDescriptor (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-descriptors.js:178:11)\\n    at items.map (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-descriptors.js:109:50)\\n    at Array.map (<anonymous>)\\n    at createDescriptors (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-descriptors.js:109:29)\\n    at createPresetDescriptors (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-descriptors.js:101:10)\\n    at passPerPreset (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-descriptors.js:58:96)\\n    at cachedFunction (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/caching.js:33:19)\\n    at presets.presets (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-descriptors.js:29:84)\\n    at mergeChainOpts (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-chain.js:320:26)\\n    at /Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-chain.js:283:7\\n    at buildRootChain (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/config-chain.js:68:29)\\n    at loadPrivatePartialConfig (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/partial.js:85:55)\\n    at Object.loadPartialConfig (/Users/MyFolder/FEC/image-gallery-module/node_modules/@babel/core/lib/config/partial.js:110:18)\\n    at Object.<anonymous> (/Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:140:26)\\n    at Generator.next (<anonymous>)\\n    at asyncGeneratorStep (/Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:3:103)\\n    at _next (/Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:5:194)\\n    at /Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:5:364\\n    at new Promise (<anonymous>)\\n    at Object.<anonymous> (/Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:5:97)\\n    at Object._loader (/Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:220:18)\\n    at Object.loader (/Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:56:18)\\n    at Object.<anonymous> (/Users/MyFolder/FEC/image-gallery-module/node_modules/babel-loader/lib/index.js:51:12)\");//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ==");
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nSyntaxError: Unexpected token (7:2)\\n\\n\\u001b[0m \\u001b[90m  5 | \\u001b[39m\\n \\u001b[90m  6 | \\u001b[39m\\u001b[36mconst\\u001b[39m \\u001b[33mUnsplashImage\\u001b[39m \\u001b[33m=\\u001b[39m ({ url\\u001b[33m,\\u001b[39m key }) \\u001b[33m=>\\u001b[39m (\\n\\u001b[31m\\u001b[1m>\\u001b[22m\\u001b[39m\\u001b[90m  7 | \\u001b[39m  \\u001b[33m<\\u001b[39m\\u001b[33mdiv\\u001b[39m className\\u001b[33m=\\u001b[39m\\u001b[32m\\\"image-item\\\"\\u001b[39m key\\u001b[33m=\\u001b[39m{key} \\u001b[33m>\\u001b[39m\\n \\u001b[90m    | \\u001b[39m  \\u001b[31m\\u001b[1m^\\u001b[22m\\u001b[39m\\n \\u001b[90m  8 | \\u001b[39m    \\u001b[33m<\\u001b[39m\\u001b[33mimg\\u001b[39m src\\u001b[33m=\\u001b[39m{url} \\u001b[33m/\\u001b[39m\\u001b[33m>\\u001b[39m\\n \\u001b[90m  9 | \\u001b[39m  \\u001b[33m<\\u001b[39m\\u001b[33m/\\u001b[39m\\u001b[33mdiv\\u001b[39m\\u001b[33m>\\u001b[39m\\n \\u001b[90m 10 | \\u001b[39m)\\u001b[33m;\\u001b[39m\\u001b[0m\\n\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jbGllbnQvc3JjL2luZGV4LmpzeC5qcyIsInNvdXJjZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./client/src/index.jsx\n");
 
 /***/ })
-/******/ ]);
+
+/******/ });

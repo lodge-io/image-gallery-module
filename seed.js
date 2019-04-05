@@ -93,8 +93,6 @@ let find = (callback) => {
 module.exports.saveList = saveList;
 module.exports.documentList = documentList;
 module.exports.find = find;
-
-
 // var Room = require('./roomImageSchema');
 // // var db = require('./index.js');
 // var mongoose = require('mongoose');

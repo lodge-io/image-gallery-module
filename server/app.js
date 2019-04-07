@@ -17,6 +17,7 @@ const app = express();
 app.set('port', process.env.PORT || 3012);
 
 app.use(express.json());
+app.use(express.static(__dirname + '/../client/dist/'));
 
 app.get('/', (req, res) => {
   // mongoose.connect(dbUrl, (err, databaseConnection) => {
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
   //   console.log(results);
   //   res.json(results);
   // });
-  res.redirect('./client/dist/index.html');
+  // res.sendFile('./client/dist/index.html');
 });
 
 app.listen(app.get('port'), () => {

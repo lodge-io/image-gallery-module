@@ -12,7 +12,7 @@
     "build": "",
     "dev:react": "webpack -d --watch",
     "start:dev": "nodemon server/app.js",
-    "start": "node generate.js && node server/",
+    "start": "node seed.js && node server/",
     "test": "jest --coverage --colors"
   },
   "dependencies": {

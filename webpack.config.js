@@ -1,8 +1,8 @@
 module.exports = {
-  entry: __dirname + '/client/src/index.js',
+  entry: __dirname + '/client/src/index.jsx',
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/client/dist'
+    path: __dirname + '/client/dist/'
   },
   module: {
     rules: [
@@ -10,14 +10,19 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
         }
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader']
-      // }
     ]
-  }
+  },
+  externals: {
+    'styled-components': true,
+  },
+  plugins: [
+    
+  ],
 };
  

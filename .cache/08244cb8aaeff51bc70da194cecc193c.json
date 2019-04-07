@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./src/index.js","dynamic":true}],"generated":{"html":"<html>\n\n<head>\n\t<title>Activity rings</title>\n\t<meta charset=\"UTF-8\">\n</head>\n\n<body>\n\t<div id=\"root\"></div>\n\t<script src=\"/dist/6f6655c46118e19c6939f625d971ddf0.js\"></script>\n</body>\n\n</html>"},"hash":"99b3a4c06e2a1b2563f1d29f570f6310","cacheData":{}}

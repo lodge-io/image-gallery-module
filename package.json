@@ -11,7 +11,7 @@
     "db:seed": "node",
     "build": "",
     "dev:react": "webpack -d --watch",
-    "start:dev": "nodemon server/index.js",
+    "start:dev": "nodemon server/app.js",
     "start": "node generate.js && node server/",
     "test": "jest --coverage --colors"
   },

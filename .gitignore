@@ -1,3 +1,20 @@
-node_modules
+## MAC files ##
+.DS_Store
+
+## NPM ##
+npm
+npm-debug.log
+node_modules/
+
+logs
+*.log
+
 .env
-.DS_store
+
+# Coverage directory used by Jest
+coverage
+
+# Compiled Dirs (http://nodejs.org/api/addons.html)
+dist/
+
+.cache/

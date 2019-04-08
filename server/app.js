@@ -14,21 +14,23 @@ var db = mongoose.connection;
 // });
 
 const app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3012);
 
 app.use(express.json());
+app.use(express.static(__dirname + '/../client/dist/'));
 
 app.get('/', (req, res) => {
   // mongoose.connect(dbUrl, (err, databaseConnection) => {
-  //     if (err) console.error(err);
+      // if (err) console.error(err);
   //     db = databaseConnection.db('lodge');
 
   // });
-  db.collection('rooms').find({}).toArray((queryError, results) => {
-    if (queryError) {console.error(queryError);}
-    console.log(results);
-    res.json(results);
-  });
+  // db.collection('rooms').find({}).toArray((queryError, results) => {
+  //   if (queryError) {console.error(queryError);}
+  //   console.log(results);
+  //   res.json(results);
+  // });
+  // res.sendFile('./client/dist/index.html');
 });
 
 app.listen(app.get('port'), () => {

@@ -13,7 +13,7 @@ test('It should send a response on a GET request', () => (
 ));
 
 test('It should get photos from the database', () => (
-  request(app).get('/rooms/1/photos').then(response => {
+  request(app).get('/rooms/1').then(response => {
     expect(response.body[0].photoUrl).not.toBe(undefined);
   })
 ));

@@ -30,7 +30,7 @@ var photoSchema = new mongoose.Schema({
 
 //create a function that fetches information from the database and invokes a callback on it
 const retrievePhotos = (id, callback) => {
-  Room.findOne({'roomId': id}, (err, room) => {
+  Photo.findOne({'id': id}, (err, room) => {
     if (err) {
       callback(err, null);
     } else {
@@ -40,6 +40,12 @@ const retrievePhotos = (id, callback) => {
   });
 };
 
+function getRoomPhotos(id, callback) {
+  Photo.find()
+    .where('id').equals(id)
+    .exec(callback);
+}
+
 
 var Photo = mongoose.model('Photo', photoSchema);
-module.exports = { Photo, retrievePhotos };
+module.exports = { Photo, retrievePhotos, getRoomPhotos };

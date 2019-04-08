@@ -108,7 +108,7 @@ const ToggleList = StyledComponent.div`
   text-align: right;
 `;
 
-const ThumbnailnailImageView = StyledComponent.div`
+const ThumbnailImageView = StyledComponent.div`
   display: ${props => props.showState ? "inline-block" : "none"};
   vertical-align: middle;
   white-space: nowrap;
@@ -137,10 +137,10 @@ class Carousel extends Component {
       toggleText: 'Show Photo List \u25B2',
       toggleState: false,
     };
-    this.togglePhotos = this.togglePhotos.bind(this);
+    this.showPicsHidePics = this.showPicsHidePics.bind(this);
   }
 
-  togglePhotos() {
+  showPicsHidePics() {
     if (this.state.toggleState) {
       this.setState({toggleState: false}) 
       this.setState({toggleText: 'Show Photo List\u25B2'}) 
@@ -176,10 +176,10 @@ class Carousel extends Component {
             <Caption>{this.props.index + 1}/{this.props.texts && this.props.texts.length}: {this.props.texts && this.props.texts[this.props.index]}</Caption>
           </CaptionContainer>
           <ToggleListContainer>
-            <ToggleList onClick={this.togglePhotos}>{this.state.toggleText}</ToggleList>
-            <ThumbnailnailImageView showState={this.state.toggleState}>
+            <ToggleList onClick={this.showPicsHidePics}>{this.state.toggleText}</ToggleList>
+            <ThumbnailImageView showState={this.state.toggleState}>
               {this.props.pics && this.props.pics.map((item, index) => <Thumbnail src={item} key={index} mappedImgIndex={index} selectedImgIndex={this.props.index} newSliderLocation={this.props.newSliderLocation} prevSliderLocation={this.props.prevSliderLocation} onClick={this.props.handleClickOnCarouselPic}/>)}
-            </ThumbnailnailImageView>
+            </ThumbnailImageView>
           </ToggleListContainer>
         </PhotoAndCaptionContainer>
       </Modal>

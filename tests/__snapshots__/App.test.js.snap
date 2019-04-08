@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render correctly 1`] = `
+<div>
+  <div
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundImage": "url('')",
+      }
+    }
+  >
+    <button>
+      View Photos
+    </button>
+  </div>
+  <Modal
+    open={false}
+    photos={
+      Array [
+        Object {
+          "photoUrl": "",
+        },
+      ]
+    }
+    toggleModal={[Function]}
+  />
+</div>
+`;

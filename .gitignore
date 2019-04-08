@@ -10,7 +10,7 @@ logs
 *.log
 
 .env
-
+package-lock.json
 # Coverage directory used by Jest
 coverage
 

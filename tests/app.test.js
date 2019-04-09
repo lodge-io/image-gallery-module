@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
-import Applet from '../client/src/components/Applet.jsx';
+import Applet from '../client/src/components/Applet';
 
 configure({ adapter: new Adapter() });
 
@@ -16,14 +16,4 @@ test('toggleModal should toggle isOpen', () => {
   const btn = output.find('div').get(1);
   btn.props.onClick();
   expect(output.state().isOpen).toBe(true);
-});
-
-test('renders without crashing', () => {
-  if (typeof window !== 'undefined') {
-    const div = document.createElement('div');
-    ReactDOM.render(<Applet />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  }
-
-
 });

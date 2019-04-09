@@ -108,7 +108,7 @@ const ToggleList = StyledComponent.div`
   text-align: right;
 `;
 
-const ThumbnailnailImageView = StyledComponent.div`
+const ThumbnailImageView = StyledComponent.div`
   display: ${props => props.showState ? "inline-block" : "none"};
   vertical-align: middle;
   white-space: nowrap;
@@ -177,9 +177,9 @@ class Carousel extends Component {
           </CaptionContainer>
           <ToggleListContainer>
             <ToggleList onClick={this.showPicsHidePics}>{this.state.toggleText}</ToggleList>
-            <ThumbnailnailImageView showState={this.state.toggleState}>
+            <ThumbnailImageView showState={this.state.toggleState}>
               {this.props.pics && this.props.pics.map((item, index) => <Thumbnail src={item} key={index} mappedImgIndex={index} selectedImgIndex={this.props.index} newSliderLocation={this.props.newSliderLocation} prevSliderLocation={this.props.prevSliderLocation} onClick={this.props.handleClickOnCarouselPic}/>)}
-            </ThumbnailnailImageView>
+            </ThumbnailImageView>
           </ToggleListContainer>
         </PhotoAndCaptionContainer>
       </Modal>

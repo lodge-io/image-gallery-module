@@ -1,39 +1,34 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-// const cors = require('cors');
-const dbUrl = 'mongod://localhost/lodge';
-const config = require('../database/index');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const Photo = require('../database/models/Photo.js');
 
-var db;
-mongoose.connect(config.database);
-var db = mongoose.connection;
-// mongoose.connect(dbUrl, (err, databaseConnection) => {
-//     if (err) console.error(err);
-//     db = databaseConnection.db('lodge');
-// });
+const sendPhotos = (req, res) => {
+  Photo.retrievePhotos(req.params.id, (err, results) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      console.log(results)
+      res.type('json').send(results);
+    }
+  });
+};
 
 const app = express();
-app.set('port', process.env.PORT || 3012);
 
-app.use(express.json());
-app.use(express.static(__dirname + '/../client/dist/'));
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  // mongoose.connect(dbUrl, (err, databaseConnection) => {
-      // if (err) console.error(err);
-  //     db = databaseConnection.db('lodge');
+app.use('/', express.static(__dirname + '/../client/dist'));
 
-  // });
-  // db.collection('rooms').find({}).toArray((queryError, results) => {
-  //   if (queryError) {console.error(queryError);}
-  //   console.log(results);
-  //   res.json(results);
-  // });
-  // res.sendFile('./client/dist/index.html');
+app.get('/rooms/:id',  (req, res) => {
+  Photo.getRoomPhotos(req.params.id, (error, results) => {
+    if (results.length === 0) {
+      res.status(500).end();
+      return;
+    }
+    res.type('json').send(results);
+  });
 });
-
-app.listen(app.get('port'), () => {
-  console.log(`Server started: http://localhost:${app.get('port')}/`);
-});
-  
+module.exports = app;

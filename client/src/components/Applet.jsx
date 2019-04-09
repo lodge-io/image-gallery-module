@@ -6,7 +6,7 @@ import Save from './Save.jsx';
 
 const StyledComponent = window.styled;
 
-const FadeInOut = () =>  window.styled.keyframes`
+const toggleFade = () =>  window.styled.keyframes`
   0% {
     filter: blur(20px);
   }
@@ -19,7 +19,7 @@ const PhotoElement = StyledComponent.img`
   transition: transform 0.45s;
   background-size:cover;
   background-image: url(${props => props.wait ? props.srcThumb : props.srcBig});
-  animation: ${FadeInOut} 500ms ease-in-out 0s forwards;
+  animation: ${toggleFade} 500ms ease-in-out 0s forwards;
   width: 100%;
   height: 100%;
 `;
@@ -298,7 +298,7 @@ class Applet extends Component {
     if (window.location.href.split('?')[1]) {
       paramId = window.location.href.split('?')[1];
      } else {
-      window.location = window.location.href + "?100";
+      window.location = window.location.href + "?1";
       paramId = window.location;
      }
     this.getPhotos(paramId);

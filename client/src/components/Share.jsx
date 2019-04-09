@@ -60,7 +60,7 @@ class Share extends React.Component {
         <NestedContainer>
             <CloseButton onClick={this.props.handleClose}>
             </CloseButton>
-          <Screenshot src="" />
+          <Screenshot src="https://s3-us-west-1.amazonaws.com/ch0psh0p-bread4bed/ShareModal.png" />
         </NestedContainer>
         </MainContainer>
       </ShareModal>

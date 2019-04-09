@@ -7,7 +7,7 @@ var photoSchema = new mongoose.Schema({
   id: Number,
   photoId: Number,
   url: String,
-  caption: String,
+  description: String,
 });
 
 
@@ -26,11 +26,11 @@ var photoSchema = new mongoose.Schema({
 //   imageURL: String,
 //   picCaption: String,
 // });
-
+var Photo = mongoose.model('Photo', photoSchema);
 
 //create a function that fetches information from the database and invokes a callback on it
 const retrievePhotos = (id, callback) => {
-  Room.findOne({'roomId': id}, (err, room) => {
+  Photo.find({'id': id}, (err, room) => {
     if (err) {
       callback(err, null);
     } else {
@@ -40,6 +40,17 @@ const retrievePhotos = (id, callback) => {
   });
 };
 
+function getRoomPhotos(id, callback) {
+  Photo.find()
+    .where('id').equals(id)
+    .exec(callback);
+}
 
-var Photo = mongoose.model('Photo', photoSchema);
-module.exports = { Photo, retrievePhotos };
+
+
+
+module.exports = { Photo, retrievePhotos, getRoomPhotos };
+
+// router.get('/:id', controller.sendPhotos)
+
+

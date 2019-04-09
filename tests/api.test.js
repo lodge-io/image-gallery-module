@@ -6,13 +6,13 @@ describe('API', () => {
   describe('GET /api/rooms/:id/photos', () => {
     test('should respond with status code 200', () => {
       return request(app)
-        .get('/api/rooms/1/photos')
+        .get('/api/rooms/1/')
         .expect(200);
     });
 
     test('should respond with a 404 for invalid id', () => {
         return request(app)
-          .get('/api/rooms/101/photos')
+          .get('/api/rooms/to/be/100')
           .expect(404);
       });
     }); 

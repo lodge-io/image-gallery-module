@@ -208,7 +208,8 @@ class Carousel extends Component {
             </ToggleList>
             <ThumbnailImageView showState={this.state.toggleState}>
               {this.props.pics && this.props.pics.map((item, index) => 
-                <Thumbnail src={item} 
+                <Thumbnail 
+                  src={item} 
                   key={index} 
                   mappedImgIndex={index} 
                   selectedImgIndex={this.props.index} 

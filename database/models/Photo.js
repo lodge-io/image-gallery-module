@@ -34,4 +34,3 @@ function getRoomPhotos(id, callback) {
 module.exports = { Photo, retrievePhotos, getRoomPhotos };
 
 
-

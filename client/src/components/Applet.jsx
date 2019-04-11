@@ -208,15 +208,20 @@ class Applet extends Component {
     this.generateCarouselPosition = this.generateCarouselPosition.bind(this);
   }
 
+  // getPhotos(roomID) {
+  //   let that = this;
+  //   axios.get(`/rooms/${roomID}`)
+  //     .then((response) => {
+  //       that.setState({homePhotoArray: response.data});
+  //       that.sortAndStorePhotosArray();
+  //     });
+  // }
   getPhotos(roomID) {
     let that = this;
     axios.get(`/rooms/${roomID}`)
       .then((response) => {
         that.setState({homePhotoArray: response.data});
         that.sortAndStorePhotosArray();
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
 
@@ -316,6 +321,23 @@ class Applet extends Component {
     }
   }
 
+  // componentDidMount() {
+  //   let paramId;
+  //   if (window.location.href.split('?')[1]) {
+  //     paramId = window.location.href.split('?')[1];
+  //   } else {
+  //     window.location = window.location.href + '?1';
+  //     paramId = window.location;
+  //   }
+  //   this.getPhotos(paramId);
+  //   setTimeout(() => { 
+  //     this.setState({
+  //       wait: false
+  //     });
+  //   }, 200);
+  // }
+
+  // Hard coded for proxy support 
   componentDidMount() {
     let paramId;
     if (window.location.href.split('?')[1]) {

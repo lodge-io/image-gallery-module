@@ -343,15 +343,21 @@ class Applet extends Component {
           prevSliderLocation={this.state.prevSliderLocation} 
           newSliderLocation={this.state.newSliderLocation}
           index={this.state.index} pics={this.state.sortedPhotosArr} 
-          texts={this.state.sortedTextArr}/>
+          texts={this.state.sortedTextArr}
+        />
 
-        <Share show={this.state.showShareModal} 
-          handleClose={this.toggleShareButtonModal}/>
-        <Save show={this.state.showSaveModal} 
-          handleClose={this.toggleSaveButtonModal}/>
+        <Share 
+          show={this.state.showShareModal} 
+          handleClose={this.toggleShareButtonModal}
+        />
+        <Save  
+          show={this.state.showSaveModal} 
+          handleClose={this.toggleSaveButtonModal}
+        />
 
         <PrimaryPhoto>
-          <PhotoElement srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[0]} 
+          <PhotoElement 
+            srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[0]} 
             srcBig={this.state.sortedPhotosArr && this.state.sortedPhotosArr[0]} 
             wait={this.state.wait} 
             onClick={this.handleClickOnDisplayPhoto.bind(null, 0)}
@@ -359,14 +365,16 @@ class Applet extends Component {
         </PrimaryPhoto>
         <SecondaryPhotos>
           <PhotoGrid>
-            <PhotoElement srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[1]} 
+            <PhotoElement 
+              srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[1]} 
               srcBig={this.state.sortedPhotosArr && this.state.sortedPhotosArr[1]} 
               wait={this.state.wait} 
               onClick={this.handleClickOnDisplayPhoto.bind(null, 1)}
             />
           </PhotoGrid>
           <PhotoGrid>
-            <PhotoElement srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[2]} 
+            <PhotoElement 
+              srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[2]} 
               srcBig={this.state.sortedPhotosArr && this.state.sortedPhotosArr[2]} 
               wait={this.state.wait} onClick={this.handleClickOnDisplayPhoto.bind(null, 2)}
             />

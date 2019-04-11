@@ -109,7 +109,7 @@ const ToggleList = StyledComponent.div`
 `;
 
 const ThumbnailImageView = StyledComponent.div`
-  display: ${ props => props.showState ? 'inline-block' : 'none' };
+  display: ${props => props.showState ? 'inline-block' : 'none'};
   vertical-align: middle;
   white-space: nowrap;
   overflow-x: hidden;
@@ -187,12 +187,18 @@ class Carousel extends Component {
           onClick={this.props.scrollImg.bind(null, -1)}
         >
           <LeftButtonIcon viewBox="0 0 129 129">
-            <path d="m88.6,121.3c0.8,0.8 1.8,1.2 2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z"/>
+            <path d="m88.6,121.3c0.8,0.8 1.8,1.2 
+              2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 
+              0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,
+              53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z"
+            />
           </LeftButtonIcon>
         </LeftButton>
         <PhotoAndCaptionContainer>
           <CenterImageContainer>
-            <CenterImage src={this.props.pics && this.props.pics[this.props.index]} />
+            <CenterImage src={this.props.pics && 
+              this.props.pics[this.props.index]} 
+            />
           </CenterImageContainer>
           <CaptionContainer>
             <Caption>{this.props.index + 1}/{this.props.texts && this.props.texts.length}: {this.props.texts && this.props.texts[this.props.index]}</Caption>
@@ -200,7 +206,16 @@ class Carousel extends Component {
           <ToggleListContainer>
             <ToggleList onClick={this.showPicsHidePics}>{this.state.toggleText}</ToggleList>
             <ThumbnailImageView showState={this.state.toggleState}>
-              {this.props.pics && this.props.pics.map((item, index) => <Thumbnail src={item} key={index} mappedImgIndex={index} selectedImgIndex={this.props.index} newSliderLocation={this.props.newSliderLocation} prevSliderLocation={this.props.prevSliderLocation} onClick={this.props.handleClickOnCarouselPic}/>)}
+              {this.props.pics && this.props.pics.map((item, index) => 
+                <Thumbnail src={item} 
+                  key={index} 
+                  mappedImgIndex={index} 
+                  selectedImgIndex={this.props.index} 
+                  newSliderLocation={this.props.newSliderLocation} 
+                  prevSliderLocation={this.props.prevSliderLocation} 
+                  onClick={this.props.handleClickOnCarouselPic}
+                />
+              )}
             </ThumbnailImageView>
           </ToggleListContainer>
         </PhotoAndCaptionContainer>

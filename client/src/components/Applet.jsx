@@ -212,7 +212,7 @@ class Applet extends Component {
     let that = this;
     axios.get(`/rooms/${roomID}`)
       .then((response) => {
-        that.setState({homeArray: response.data});
+        that.setState({homePhotoArray: response.data});
         that.sortAndStorePhotosArray();
       })
       .catch((error) => {
@@ -224,30 +224,42 @@ class Applet extends Component {
     let sortedPhotosArr = [];
     let sortedThumbsArr = [];
     let sortedTextArr = [];
-    for (let i = 0; i < this.state.homeArray.length; i++ ) {
-      if (this.state.homeArray[i].is_primary) {
-        sortedPhotosArr = [this.state.homeArray[i].url].concat(sortedPhotosArr);
-        sortedThumbsArr = [this.state.homeArray[i].thumb_url].concat(sortedThumbsArr);
-        sortedTextArr = [this.state.homeArray[i].description].concat(sortedTextArr);
+    for (let i = 0; i < this.state.homePhotoArray.length; i++ ) {
+      if (this.state.homePhotoArray[i].is_primary) {
+        sortedPhotosArr = [this.state.homePhotoArray[i].url].concat(sortedPhotosArr);
+        sortedThumbsArr = [this.state.homePhotoArray[i].thumb_url].concat(sortedThumbsArr);
+        sortedTextArr = [this.state.homePhotoArray[i].description].concat(sortedTextArr);
       } else {
-        sortedPhotosArr.push(this.state.homeArray[i].url);
-        sortedThumbsArr.push(this.state.homeArray[i].thumb_url);
-        sortedTextArr.push(this.state.homeArray[i].description);
+        sortedPhotosArr.push(this.state.homePhotoArray[i].url);
+        sortedThumbsArr.push(this.state.homePhotoArray[i].thumb_url);
+        sortedTextArr.push(this.state.homePhotoArray[i].description);
       }
     }
-    this.setState({sortedPhotosArr: sortedPhotosArr, sortedThumbsArr: sortedThumbsArr, sortedTextArr: sortedTextArr});
+    this.setState({
+      sortedPhotosArr: sortedPhotosArr, 
+      sortedThumbsArr: sortedThumbsArr, 
+      sortedTextArr: sortedTextArr
+    });
   }
 
   togglePhotoCarouselDisplay() {
-    this.setState({showPhotoModal: !this.state.showPhotoModal});
+    this.setState({
+      showPhotoModal: !this.state.showPhotoModal
+    });
   }
 
   toggleShareButtonModal() {
-    this.setState({showShareModal: !this.state.showShareModal});
+    this.setState({
+      showShareModal: 
+      !this.state.showShareModal
+    });
   }
 
   toggleSaveButtonModal() {
-    this.setState({showSaveModal: !this.state.showSaveModal});
+    this.setState({
+      showSaveModal: 
+      !this.state.showSaveModal
+    });
   }
 
   handleClickOnDisplayPhoto(index, event) {
@@ -282,13 +294,25 @@ class Applet extends Component {
   }
   
   scrollImg(direction) {
-    this.setState({prevSliderLocation: this.generateCarouselPosition(this.state.index, 0)});
+    this.setState({
+      prevSliderLocation: this.generateCarouselPosition(this.state.index, 0)
+    });
+
     if (this.state.index + direction > this.state.sortedPhotosArr.length - 1) {
-      this.setState({index: 0, newSliderLocation: '0%'});
+      this.setState({
+        index: 0, 
+        newSliderLocation: '0%'
+      });
     } else if (this.state.index + direction < 0) {
-      this.setState({index: this.state.sortedPhotosArr.length - 1, newSliderLocation: this.generateCarouselPosition(this.state.sortedPhotosArr.length - 1, 0)});
+      this.setState({
+        index: this.state.sortedPhotosArr.length - 1, 
+        newSliderLocation: this.generateCarouselPosition(this.state.sortedPhotosArr.length - 1, 0)
+      });
     } else {
-      this.setState({index: this.state.index + direction, newSliderLocation: (this.generateCarouselPosition(this.state.index, direction))});
+      this.setState({
+        index: this.state.index + direction, 
+        newSliderLocation: this.generateCarouselPosition(this.state.index, direction)
+      });
     }
   }
 
@@ -301,7 +325,11 @@ class Applet extends Component {
       paramId = window.location;
     }
     this.getPhotos(paramId);
-    setTimeout(() => { this.setState({wait: false}) ;}, 200);
+    setTimeout(() => { 
+      this.setState({
+        wait: false
+      });
+    }, 200);
   }
   
   render() {

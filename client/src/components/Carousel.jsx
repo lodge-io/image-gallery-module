@@ -3,7 +3,7 @@ const StyledComponent = window.styled;
 
 const Modal = StyledComponent.div`
   position: fixed;
-  display: ${props => props.showMe ? "block" : "none"};
+  display: ${props => props.showMe ? 'block' : 'none'};
   background-color: grey;
   z-index: 3;
   postition: absolute;
@@ -98,7 +98,7 @@ const Caption = StyledComponent.div`
 
 
 const ToggleListContainer = StyledComponent.div`
-`
+`;
 
 const ToggleList = StyledComponent.div`
   color: white;
@@ -109,7 +109,7 @@ const ToggleList = StyledComponent.div`
 `;
 
 const ThumbnailImageView = StyledComponent.div`
-  display: ${props => props.showState ? "inline-block" : "none"};
+  display: ${ props => props.showState ? 'inline-block' : 'none' };
   vertical-align: middle;
   white-space: nowrap;
   overflow-x: hidden;
@@ -125,9 +125,9 @@ const Thumbnail = StyledComponent.img`
   width: 18%;
   margin: .5%;
   animation: ${props => Scroll(props.prevSliderLocation, props.newSliderLocation)} 500ms ease-out forwards;
-  filter: ${props => props.mappedImgIndex === props.selectedImgIndex ? "brightness(100%)" : "brightness(35%)"};
-  border-left: ${props => props.mappedImgIndex === props.selectedImgIndex ? "solid blue 0px" : "none"};
-  border-right: ${props => props.mappedImgIndex === props.selectedImgIndex ? "solid blue 0px" : "none"};
+  filter: ${props => props.mappedImgIndex === props.selectedImgIndex ? 'brightness(100%)' : 'brightness(35%)'};
+  border-left: ${props => props.mappedImgIndex === props.selectedImgIndex ? 'solid blue 0px' : 'none'};
+  border-right: ${props => props.mappedImgIndex === props.selectedImgIndex ? 'solid blue 0px' : 'none'};
 `;
 
 class Carousel extends Component {
@@ -142,11 +142,19 @@ class Carousel extends Component {
 
   showPicsHidePics() {
     if (this.state.toggleState) {
-      this.setState({toggleState: false}) 
-      this.setState({toggleText: 'Show Photo List\u25B2'}) 
+      this.setState({
+        toggleState: false
+      });
+      this.setState({
+        toggleText: 'Show Photo List\u25B2'
+      });
     } else {
-      this.setState({toggleState: true});
-      this.setState({toggleText: 'Hide Photo List\u25BC'}) 
+      this.setState({
+        toggleState: true
+      });
+      this.setState({
+        toggleText: 'Hide Photo List\u25BC'
+      }); 
     }  
   }
   
@@ -154,16 +162,30 @@ class Carousel extends Component {
     return (
       <Modal showMe={this.props.show}>
         <CloseButton onClick={this.props.handleClose}>
-          <CloseButtonIcon viewBox="0 0 64 64">
-            <path d="M28.94 31.79L.61 60.1a2.01 2.01 0 1 0 2.85 2.85L32 34.42l28.54 28.54a2 2 0 0 0 2.85 0c.79-.78.79-2.06 0-2.85L35.06 31.8 63.41 3.44A2.01 2.01 0 1 0 60.56.59L32 29.15 3.44.59A2.01 2.01 0 0 0 .6 3.44l28.35 28.35z"/>
+          <CloseButtonIcon 
+            viewBox="0 0 64 64"
+          >
+            <path d="M28.94 31.79L.61 60.1a2.01 2.01 0 1 0 
+              2.85 2.85L32 34.42l28.54 28.54a2 2 0 0 0 2.85 
+              0c.79-.78.79-2.06 0-2.85L35.06 31.8 63.41 3.44A2.01 
+              2.01 0 1 0 60.56.59L32 29.15 3.44.59A2.01 2.01 0 0 0 
+              .6 3.44l28.35 28.35z"
+            />
           </CloseButtonIcon>
         </CloseButton>
-        <RightButton onClick={this.props.scrollImg.bind(null, 1)}>
+        <RightButton 
+          onClick={this.props.scrollImg.bind(null, 1)}
+        >
           <RightButtonIcon viewBox="0 0 129 129">
-          <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
+            <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,
+              1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,
+              0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"
+            />
           </RightButtonIcon>
         </RightButton>
-        <LeftButton onClick={this.props.scrollImg.bind(null, -1)}>
+        <LeftButton 
+          onClick={this.props.scrollImg.bind(null, -1)}
+        >
           <LeftButtonIcon viewBox="0 0 129 129">
             <path d="m88.6,121.3c0.8,0.8 1.8,1.2 2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z"/>
           </LeftButtonIcon>
@@ -183,7 +205,7 @@ class Carousel extends Component {
           </ToggleListContainer>
         </PhotoAndCaptionContainer>
       </Modal>
-    )
+    );
   }
 }
 export default Carousel;

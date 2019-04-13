@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 //import StyledComponent from 'styled-components';
 const StyledComponent = window.styled;
 
 const ShareModal = StyledComponent.div`
   position: fixed;
   overflow-y: auto;
-  display: ${props => props.showMe ? "block" : "none"};
+  display: ${props => props.showMe ? 'block' : 'none'};
   height: 100%;
   width: 100%;
   background-color: rgb(0,0,0,.6);
   z-index: 2;
-`
+`;
+
 const MainContainer = StyledComponent.div`
   height: 110%;
   width: 100%;
@@ -18,7 +19,7 @@ const MainContainer = StyledComponent.div`
   display: flex;
   justify-content: center;
   z-index: 2;
-`
+`;
 
 const NestedContainer = StyledComponent.div`
   position: absolute;
@@ -29,8 +30,7 @@ const NestedContainer = StyledComponent.div`
   z-index: 2;
   display: flex;
   justify-content: center;
-  
-`
+`;
 
 const CloseButton = StyledComponent.div`
   position: absolute;
@@ -38,33 +38,32 @@ const CloseButton = StyledComponent.div`
   left: 3.5%;
   width: 40px;
   height: 40px;
-`
+`;
 
 const Screenshot = StyledComponent.img`
   height: 700px;
   object-fit: contain;
-  
-`
+`;
 
-class Share extends React.Component {
+class Share extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
   }
-  
+
   render() {
     return (
       <ShareModal showMe={this.props.show}>
         <MainContainer>
-        <NestedContainer>
+          <NestedContainer>
             <CloseButton onClick={this.props.handleClose}>
             </CloseButton>
-          <Screenshot src="https://s3-us-west-1.amazonaws.com/ch0psh0p-bread4bed/ShareModal.png" />
-        </NestedContainer>
+            <Screenshot src="https://s3-us-west-1.amazonaws.com/ch0psh0p-bread4bed/ShareModal.png" />
+          </NestedContainer>
         </MainContainer>
       </ShareModal>
-    )
+    );
   }
 }
 export default Share;

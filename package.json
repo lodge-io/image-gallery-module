@@ -2,17 +2,17 @@
   "name": "Lodge.io",
   "version": "1.0.0",
   "description": "Front-end Capstone Project",
-  "author": "",
-  "license": "",
+  "author": "Michael Frenkel",
+  "license": "MIT",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
-    "dev:react": "webpack -d --watch",
     "db:seed": "node database/seed/seed.js",
-    "start:dev": "nodemon server/index.js",
+    "dev:react": "webpack -d --watch",
+    "dev:server": "node server/index.js",
+    "dock": "npm run db:seed && npm run dev:server ",
     "test": "jest --watch",
-    "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
   },
   "dependencies": {
@@ -38,7 +38,7 @@
     "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^1.0.0",
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.4",

@@ -10,22 +10,6 @@ var photoSchema = new mongoose.Schema({
   description: String,
 });
 
-
-
-
-// const roomSchema = new mongoose.Schema({
-//   roomNum: Number,
-//   photoNum: Number,
-//   description: String,
-//   url: String,
-// });
-
-// const descriptionSchema = new mongoose.Schema({
-//   photoID: Number,
-//   listingID: Number,
-//   imageURL: String,
-//   picCaption: String,
-// });
 var Photo = mongoose.model('Photo', photoSchema);
 
 //create a function that fetches information from the database and invokes a callback on it
@@ -47,10 +31,6 @@ function getRoomPhotos(id, callback) {
 }
 
 
-
-
 module.exports = { Photo, retrievePhotos, getRoomPhotos };
-
-// router.get('/:id', controller.sendPhotos)
 
 

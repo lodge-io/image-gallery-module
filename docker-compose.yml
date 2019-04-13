@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  lodge:
+    container_name: image-gallery-service
+    restart: always
+    build: .
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    volumes: 
+    - /Users/MyFolder/mongodb-data
+    image: mongo:latest
+    ports: 
+      - '27017:27017'
+
+   

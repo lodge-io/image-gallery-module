@@ -6,7 +6,7 @@ const SaveModal = StyledComponents.div`
   overflow-y: auto;
   height: 100%;
   width: 100%;
-  display: ${props => props.showMe ? "block" : "none"};
+  display: ${props => props.showMe ? 'block' : 'none'};
   background-color: rgb(0,0,0,.5);
   z-index: 2;
 `;
@@ -55,14 +55,14 @@ class Save extends Component {
     return (
       <SaveModal showMe={this.props.show}>
         <PrimaryContainer>
-        <NestedContainer>
+          <NestedContainer>
             <CloseButton onClick={this.props.handleClose}>
             </CloseButton>
-          <Screenshot src="https://s3-us-west-1.amazonaws.com/ch0psh0p-bread4bed/SaveModal.png" />
-        </NestedContainer>
+            <Screenshot src="https://s3-us-west-1.amazonaws.com/ch0psh0p-bread4bed/SaveModal.png" />
+          </NestedContainer>
         </PrimaryContainer>
       </SaveModal>
-    )
+    );
   }
 }
 export default Save;

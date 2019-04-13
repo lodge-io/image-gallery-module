@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": "Front-end Capstone Project",
   "author": "Michael Frenkel",
-  "license": "",
+  "license": "MIT",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
-    "dev:react": "webpack -d --watch",
-    "start": "nodemon server/index.js",
     "db:seed": "node database/seed/seed.js",
+    "dev:react": "webpack -d --watch",
+    "dev:server": "node server/index.js",
+    "dock": "npm run db:seed && npm run dev:server ",
     "test": "jest --watch",
-    "test:coverage": "jest --coverage --colors",
-    "build": "webpack -p"
+    "test:coverage": "jest --coverage --colors"
   },
   "dependencies": {
     "axios": "^0.18.0",

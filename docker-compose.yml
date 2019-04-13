@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  image-gallery-service:
+  lodge:
     container_name: image-gallery-service
     restart: always
     build: .

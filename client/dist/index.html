@@ -10,9 +10,9 @@
   <meta name="theme-color" content="#000000" />
   <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.3.1/stitch.js"></script>
   <script>
-  const client = stitch.Stitch.initializeDefaultAppClient('');
+  const client = stitch.Stitch.initializeDefaultAppClient('lodge-ngnzc');
 
-  const db = client.getServiceClient(stitch.RemoteMongoClient.factory, 'mongodb1').db('<DATABASE>');
+  const db = client.getServiceClient(stitch.RemoteMongoClient.factory, 'get').db('test');
 
   client.auth.loginWithCredential(new stitch.AnonymousCredential()).then(user =>
     db.collection('test').updateOne({owner_id: client.auth.user.id}, {$set:{number:42}}, {upsert:true})

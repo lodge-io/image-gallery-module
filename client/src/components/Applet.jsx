@@ -324,7 +324,8 @@ class Applet extends Component {
       window.location = window.location.href + '?1';
       paramId = window.location;
     }
-    this.getPhotos(paramId);
+    // hard code an image to return
+    this.getPhotos(18);
     setTimeout(() => { 
       this.setState({
         wait: false

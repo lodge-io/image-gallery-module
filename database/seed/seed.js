@@ -44,7 +44,9 @@ function createRooms() {
   }
 
   model.Photo.create(roomPhotos)
-    .then(() => db.close());
-}
+    .then(() => db.close())
+    .catch(err => console.log('Something went wrong:', error));
+  }
 
 createRooms();
+åå

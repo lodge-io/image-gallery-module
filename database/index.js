@@ -1,24 +1,39 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
+const dbURI = `mongodb://${process.env.MONGODB_URI ||
+  'localhost'}:27017/lodge`;
 
-// To Connect to MongoDB Atlas Cluster
-// const mongoUri = 'mongodb+srv://lodge:lodge2019@cluster0-s6qhj.mongodb.net/test?retryWrites=true'
+console.log(dbURI);
 
-// const mongoUri = 'mongodb://172.18.0.3:27017/lodgeTESTING';
-// const mongoUri = `mongodb+srv://lodge:${process.env.DB_PASSWORD}@cluster0-s6qhj.mongodb.net/test?retryWrites=true`;
-const mongoUri = `mongodb://lodge:${process.env.DB_PASSWORD}@stitch.mongodb.com:27020/?authMechanism=PLAIN&authSource=%24external&ssl=true&appName=lodge-ngnzc:get:local-userpass`;
-mongoose.connect(mongoUri, { useNewUrlParser: true });
+const db = mongoose.connect(
+  dbURI,
+  { family: 4, useNewUrlParser: true }
+);
 
-
-
-const db = mongoose.connect(mongoUri, { useNewUrlParser: true }, () => {
-  console.log('Connected to MongoDB!');
+mongoose.connection.on('connected', function() {
+  console.log('Mongoose default connection open to ' + dbURI);
 });
 
-// db.on('error', error => console.error('Error. Having trouble connecting. Error Message:', error));
-// db.once('open', () => console.log('Connected to MongoDB! The MongoURI is:', mongoUri));
+// If the connection throws an error
+mongoose.connection.on('error', function(err) {
+  console.log('Mongoose default connection error: ' + err);
+});
 
-module.exports = db;
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function() {
+  console.log('Mongoose default connection disconnected');
+});
 
+// If the Node process ends, close the Mongoose connection
+process.on('SIGINT', function() {
+  mongoose.connection.close(function() {
+    console.log(
+      'Mongoose default connection disconnected through app termination'
+    );
+    process.exit(0);
+  });
+});
 
-
+module.exports = {
+  Photo: require('./models/Photo'),
+  db: db
+};

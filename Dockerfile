@@ -1,17 +1,13 @@
-FROM node:latest
+FROM node:7.6-alpine
 
-RUN mkdir -p /client/dist/app
+RUN mkdir -p /src/app
 
-WORKDIR /client/dist/app
+WORKDIR /src/app
 
-COPY package*.json ./
+COPY . /src/app
 
-COPY . /client/dist/app
+RUN npm install
 
-RUN npm i 
+EXPOSE 3000
 
-EXPOSE 8000
-
-CMD [ "npm", "run", "dock"]
-
-
+CMD [ "npm", "start", "run", "dock" ]

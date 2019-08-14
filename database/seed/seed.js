@@ -1,50 +1,62 @@
-const faker = require('faker');
-const db = require('../index.js'); // start db connection
-const model = require('../models/Photo.js');
+// const faker = require('faker');
+// const db = require('../index.js'); // start db connection
+// const model = require('../models/Photo.js');
 
-// aws.config.update({
-//   region: 'us-west-2'});
-
-
-// let s3 = new aws.S3();
-
-// let data = {
-//   // fill in Bucket information here
-//   Bucket: ''
-// };
+// // aws.config.update({
+// //   region: 'us-west-2'});
 
 
-function createPhotos(id) {
-  const photos = [];
-  const photoCount = Math.floor(Math.random() * 20) + 1;
+// // let s3 = new aws.S3();
 
-  for (let j = 1; j <= photoCount; j += 1) {
-    const randomImgId = Math.floor(Math.random() * 100) + 1;
+// // let data = {
+// //   // fill in Bucket information here
+// //   Bucket: ''
+// // };
 
-    const photo = {
-      id,
-      photoId: j,
-      url: `https://s3-us-west-1.amazonaws.com/hrsf-fec/img${randomImgId}.jpg`,
-      description: faker.lorem.sentence(),
-    };
 
-    photos.push(photo);
-  }
+// function createPhotos(id) {
+//   const photos = [];
+//   const photoCount = Math.floor(Math.random() * 20) + 1;
 
-  return photos;
-}
+//   for (let j = 1; j <= photoCount; j += 1) {
+//     const randomImgId = Math.floor(Math.random() * 100) + 1;
 
-function createRooms() {
-  const roomPhotos = [];
+//     const photo = {
+//       id,
+//       photoId: j,
+//       url: `https://s3-us-west-1.amazonaws.com/hrsf-fec/img${randomImgId}.jpg`,
+//       description: faker.lorem.sentence(),
+//     };
 
-  for (let i = 1; i <= 100; i += 1) {
-    const id = i;
-    const photos = createPhotos(id);
-    roomPhotos.push(...photos);
-  }
+//     photos.push(photo);
+//   }
 
-  model.Photo.create(roomPhotos)
-    .then(() => db.close());
-}
+//   return photos;
+// }
 
-createRooms();
+// function createRooms() {
+//   const roomPhotos = [];
+
+//   for (let i = 1; i <= 100; i += 1) {
+//     const id = i;
+//     const photos = createPhotos(id);
+//     roomPhotos.push(...photos);
+//   }
+
+//   model.Photo.create(roomPhotos)
+//     .then(() => db.close())
+//     .catch(err => console.log('Something went wrong:', error));
+//   }
+
+// createRooms();
+const db = require('../index');
+const Photo = require('../models/Photo');
+const seedData = require('./fakePhotoData');
+
+const insertMockPhotos = () => {
+  Photo.create(seedData)
+    .then(() => db.disconnect());
+};
+
+insertMockPhotos();
+

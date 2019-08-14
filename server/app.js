@@ -10,24 +10,23 @@ app.use(bodyParser.json());
 
 // app.use('/', express.static(__dirname + '/../client/dist'));
 
-app.use('/', express.static(__dirname + '/../client/dist'));
-
-
-// app.get('/rooms/:id', (req, res) => {
-//   Photo.getRoomPhotos(req.params.id, (error, results) => {
-//     if (error) {
-//       console.error('Sorry, this HTTP request has failed:', error);
-//     }
-//     if (results.length === 0) {
-//       res.status(500).end();
-//       return;
-//     }
-//     res.type('json').send(results);
-//   });
+// app.get('/api', (req, res) => {
+  // Photo.getRoomPhotos(5, (error, results) => {
+  //   if (error) {
+  //     console.error('Sorry, this HTTP request has failed:', error);
+  //   }
+  //   if (results.length === 0) {
+  //     res.status(500).end();
+  //     return;
+  //   }
+  //   res.type('json').send(results);
+  // });
 // });
 
-// FOR BETTER PROXY SUPPORT 
-app.get('/rooms/:id', (req, res) => {
+
+app.use('/rooms/:id', express.static(__dirname + '/../client/dist'));
+
+app.get('/rooms/:id/photos', (req, res) => {
   Photo.getRoomPhotos(req.params.id, (error, results) => {
     if (error) {
       console.error('Sorry, this HTTP request has failed:', error);
@@ -40,5 +39,5 @@ app.get('/rooms/:id', (req, res) => {
   });
 });
 
-module.exports = app;
 
+module.exports = app;

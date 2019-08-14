@@ -197,7 +197,8 @@ class Applet extends Component {
       newSliderLocation: '0%',
       index: 0,
     };
-    this.getPhotos = this.getPhotos.bind(this);
+    // this.getPhotos = this.getPhotos.bind(this);
+    // this.getPhotoData = this.getPhotoData.bind(this);
     this.sortAndStorePhotosArray = this.sortAndStorePhotosArray.bind(this);
     this.togglePhotoCarouselDisplay = this.togglePhotoCarouselDisplay.bind(this);
     this.toggleShareButtonModal = this.toggleShareButtonModal.bind(this);
@@ -208,22 +209,17 @@ class Applet extends Component {
     this.generateCarouselPosition = this.generateCarouselPosition.bind(this);
   }
 
-  // getPhotos(roomID) {
+  // getPhotos() {
   //   let that = this;
-  //   axios.get(`/rooms/${roomID}`)
+  //   axios.get('/rooms')
   //     .then((response) => {
   //       that.setState({homePhotoArray: response.data});
   //       that.sortAndStorePhotosArray();
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
   //     });
   // }
-  getPhotos(roomID) {
-    let that = this;
-    axios.get(`/rooms/${roomID}`)
-      .then((response) => {
-        that.setState({homePhotoArray: response.data});
-        that.sortAndStorePhotosArray();
-      });
-  }
 
   sortAndStorePhotosArray() {
     let sortedPhotosArr = [];
@@ -321,38 +317,45 @@ class Applet extends Component {
     }
   }
 
+
+  componentDidMount() {
+    const id = window.location.pathname.split('/')[2];
+    axios.get('/rooms/1/photos')
+      .then(res => {
+        this.setState({
+          homePhotoArray: res.data
+        });
+      });
+  }
+
+  // getPhotoData() { 
+
+  //   fetch('/api')
+  //     .then((response) => {
+  //       this.setState({homePhotoArray: response.data});
+  //       this.sortAndStorePhotosArray();
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+
   // componentDidMount() {
-  //   let paramId;
-  //   if (window.location.href.split('?')[1]) {
-  //     paramId = window.location.href.split('?')[1];
-  //   } else {
-  //     window.location = window.location.href + '?1';
-  //     paramId = window.location;
-  //   }
-  //   this.getPhotos(paramId);
+  //   // let paramId;
+  //   // if (window.location.href.split('?')[1]) {
+  //   //   paramId = window.location.href.split('?')[1];
+  //   // } else {
+  //   //   window.location = window.location.href + '?1';
+  //   //   paramId = window.location;
+  //   // }
+  //   // hard code an image to return
+  //   this.getPhotos();
   //   setTimeout(() => { 
   //     this.setState({
   //       wait: false
   //     });
   //   }, 200);
   // }
-
-  // Hard coded for proxy support 
-  componentDidMount() {
-    let paramId;
-    if (window.location.href.split('?')[1]) {
-      paramId = window.location.href.split('?')[1];
-    } else {
-      window.location = window.location.href + '?1';
-      paramId = window.location;
-    }
-    this.getPhotos(paramId);
-    setTimeout(() => { 
-      this.setState({
-        wait: false
-      });
-    }, 200);
-  }
   
   render() {
     return (
@@ -365,21 +368,15 @@ class Applet extends Component {
           prevSliderLocation={this.state.prevSliderLocation} 
           newSliderLocation={this.state.newSliderLocation}
           index={this.state.index} pics={this.state.sortedPhotosArr} 
-          texts={this.state.sortedTextArr}
-        />
+          texts={this.state.sortedTextArr}/>
 
-        <Share 
-          show={this.state.showShareModal} 
-          handleClose={this.toggleShareButtonModal}
-        />
-        <Save  
-          show={this.state.showSaveModal} 
-          handleClose={this.toggleSaveButtonModal}
-        />
+        <Share show={this.state.showShareModal} 
+          handleClose={this.toggleShareButtonModal}/>
+        <Save show={this.state.showSaveModal} 
+          handleClose={this.toggleSaveButtonModal}/>
 
         <PrimaryPhoto>
-          <PhotoElement 
-            srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[0]} 
+          <PhotoElement srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[0]} 
             srcBig={this.state.sortedPhotosArr && this.state.sortedPhotosArr[0]} 
             wait={this.state.wait} 
             onClick={this.handleClickOnDisplayPhoto.bind(null, 0)}
@@ -387,16 +384,14 @@ class Applet extends Component {
         </PrimaryPhoto>
         <SecondaryPhotos>
           <PhotoGrid>
-            <PhotoElement 
-              srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[1]} 
+            <PhotoElement srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[1]} 
               srcBig={this.state.sortedPhotosArr && this.state.sortedPhotosArr[1]} 
               wait={this.state.wait} 
               onClick={this.handleClickOnDisplayPhoto.bind(null, 1)}
             />
           </PhotoGrid>
           <PhotoGrid>
-            <PhotoElement 
-              srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[2]} 
+            <PhotoElement srcThumb={this.state.sortedThumbsArr && this.state.sortedThumbsArr[2]} 
               srcBig={this.state.sortedPhotosArr && this.state.sortedPhotosArr[2]} 
               wait={this.state.wait} onClick={this.handleClickOnDisplayPhoto.bind(null, 2)}
             />
